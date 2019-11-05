@@ -163,6 +163,9 @@ celery = [
 cgroups = [
     'cgroupspy>=0.1.4',
 ]
+clickhouse = [
+    'clickhouse-driver==0.0.20',
+    'sqlalchemy-clickhouse==0.1.5.post0']
 # major update coming soon, clamp to 0.x
 cloudant = ['cloudant>=0.5.9,<2.0']
 crypto = ['cryptography>=0.9.3']
@@ -260,7 +263,7 @@ winrm = ['pywinrm==0.2.2']
 zendesk = ['zdesk']
 
 all_dbs = postgres + mysql + hive + mssql + hdfs + vertica + cloudant + druid + pinot \
-    + cassandra + mongo
+    + cassandra + mongo + clickhouse
 
 ############################################################################################################
 # IMPORTANT NOTE!!!!!!!!!!!!!!!
@@ -411,6 +414,7 @@ def do_setup():
             'cassandra': cassandra,
             'celery': celery,
             'cgroups': cgroups,
+            'clickhouse': clickhouse,
             'cloudant': cloudant,
             'crypto': crypto,
             'dask': dask,
