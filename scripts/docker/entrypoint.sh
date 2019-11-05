@@ -16,9 +16,25 @@
 # specific language governing permissions and limitations
 # under the License.
 
-set -e
+###### Don't use typical approach, but init and spin-up all components... 
+# set -e
 
-echo Starting Apache Airflow with command:
-echo airflow "$@"
+# echo Starting Apache Airflow with command:
+# echo airflow "$@"
 
-exec airflow "$@"
+# exec airflow "$@"
+######
+
+echo initdb...
+airflow initdb
+
+# echo start webserver... 
+# airflow webserver -p 8080 
+
+# echo start scheduler...
+# airflow scheduler
+
+# best practice to not run more than one service in same container, but doing this for quick demo/test purposes
+echo start webserver and scheduler...
+airflow webserver -p 8080 &
+airflow scheduler
